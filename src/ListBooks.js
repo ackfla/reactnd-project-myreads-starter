@@ -8,11 +8,12 @@ import Read from './Read'
 class ListBooks extends Component {
 
   state = {
-    currentlyReading: [''],
-    wantToRead: [''],
-    read: ['']
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
   }
 
+  // Gets books from server after component loaded
   componentDidMount() {
     BooksAPI.getAll().then(data => {
       this.setState({

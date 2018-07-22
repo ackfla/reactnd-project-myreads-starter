@@ -8,13 +8,13 @@ class Read extends Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {this.props.books.map((book) => (
-                        <li>
+                {this.props.books.map((book, i) => (
+                  <li key={book.title+i}>
                           <div className="book">
                             <div className="book-top">
                               <div
                                 className="book-cover"
-                                style={{backgroundImage: 'url('+book.url+')'}}>
+                                style={{backgroundImage: 'url('+book.imageLinks+')'}}>
                               </div>
                               <div className="book-shelf-changer">
                                 <select>

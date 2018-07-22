@@ -8,8 +8,8 @@ class WantToRead extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
 
-                    {this.props.books.map((book) => (
-                        <li>
+                    {this.props.books.map((book, i) => (
+                        <li key={book.title+i}>
                           <div className="book">
                             <div className="book-top">
                               <div

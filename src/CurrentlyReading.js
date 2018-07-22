@@ -14,11 +14,7 @@ class CurrentlyReading extends Component {
                             <div className="book-top">
                               <div
                                 className="book-cover"
-                                style={{
-                                  width: 128,
-                                  height: 192,
-                                  backgroundImage: 'url('+book.url+')'
-                                }}>
+                                style={{backgroundImage: 'url('+book.url+')'}}>
                               </div>
                               <div className="book-shelf-changer">
                                 <select>

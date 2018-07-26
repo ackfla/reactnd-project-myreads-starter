@@ -31,9 +31,9 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <CurrentlyReading books={ this.state.currentlyReading }/>
-          <WantToRead books={ this.state.wantToRead }/>
-          <Read books={ this.state.read }/>
+          <CurrentlyReading onMove={this.updateBooks} books={ this.state.currentlyReading }/>
+          <WantToRead onMove={this.updateBooks} books={ this.state.wantToRead }/>
+          <Read onMove={this.updateBooks} books={ this.state.read }/>
         </div>
         <Link className="open-search" to='/search'>Add a book</Link>
       </div>

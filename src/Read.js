@@ -3,6 +3,11 @@ import Book from './Book'
 
 class Read extends Component {
 
+  bookMove = (id, shelf) => {
+    const book = this.props.books.filter(book => book.id === id)[0];
+    this.props.onMove(book, shelf)
+  }
+
   render() {
     return (
       <div className="bookshelf">

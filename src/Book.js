@@ -11,15 +11,21 @@ class Book extends Component {
     thumbnail: ''
   }
 
-  // Gets book data from server
-  componentDidMount() {
+  componentWillMount() {
+    // Get book data from server
     BooksAPI.get(this.props.id).then(data => {
+      // Check if have thumbnail & store in variable
+      let thumbnail;
+      if (data.imageLinks) {
+        thumbnail = data.imageLinks.thumbnail;
+      }
+      // Set state
       this.setState({
         id: data.id,
         shelf: data.shelf,
         title: data.title,
         authors: data.author,
-        thumbnail: data.imageLinks.thumbnail
+        thumbnail: [thumbnail]
       })
     })
   }

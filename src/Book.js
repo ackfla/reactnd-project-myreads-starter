@@ -30,11 +30,11 @@ class Book extends Component {
     })
   }
 
-  // Updates state when shelf changed
+  // Book passes it's data to shelf when moved
   handleChange = (event) => {
-    this.setState({
-      shelf: event.target.value
-    });
+    this.props.onMove(this.state.id, event.target.value)
+    // Update book state to correct shelf
+    this.setState({shelf: event.target.value})
   }
 
   // Render book

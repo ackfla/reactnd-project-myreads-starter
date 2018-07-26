@@ -34,7 +34,6 @@ class Book extends Component {
   // Render book
   render() {
     return (
-      <li id={this.state.id}>
         <div className="book">
           <div className="book-top">
             <div
@@ -54,7 +53,6 @@ class Book extends Component {
           <div className="book-title">{this.state.title}</div>
           <div className="book-authors">{this.state.author}</div>
         </div>
-      </li>
     )
   }
 }

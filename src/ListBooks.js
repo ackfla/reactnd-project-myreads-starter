@@ -17,12 +17,38 @@ class ListBooks extends Component {
   componentDidMount() {
     BooksAPI.getAll().then(data => {
       this.setState({
-        currentlyReading: data.filter((book) => book.shelf === 'currentlyReading'),
-        wantToRead: data.filter((book) => book.shelf === 'wantToRead'),
-        read: data.filter((book) => book.shelf === 'read')
+        // filter returned array by shelf
+        currentlyReading: data.filter(item => item.shelf === 'currentlyReading'),
+        wantToRead: data.filter(item => item.shelf === 'wantToRead'),
+        read: data.filter(item => item.shelf === 'read')
       })
     })
   }
+
+  updateBooks = (book, shelf) => {
+
+    let update = () => {
+      // Update book on server
+      BooksAPI.update(book, shelf).then(() => {
+        // If moved to new shelf...
+        if (shelf !== 'none') {
+          // ...update book's current shelf
+          book.shelf = shelf;
+          // Add book to target shelf
+          this.setState(prevState => ({
+            [shelf]: prevState[shelf].concat(book)
+          }))
+        }
+      })
+    };
+
+    // Remove book from current shelf
+    this.setState(prevState => ({
+      [book.shelf]: prevState[book.shelf].filter(item => item.title !== book.title)
+    }), update() );
+
+  }
+
 
   render() {
     return (
